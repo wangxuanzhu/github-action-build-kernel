@@ -9,18 +9,28 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    - name: install LLVM and Clang
+      uses: KyleMayes/install-llvm-action@v1
+      with:
+         version: "12.0"
+         
+    - name: Connect to Cloudflare Warp
+      uses: daycat/cloudflare-warp-actions@main
+    
     - name: install dependencies
-      run: ｜
-        sudo apt install gcc-aarch64-linux-gnu
-        sudo apt install gcc-arm-linux-gnueabi
-        sudo apt install clang-12 llvm-12 -y
-        sudo apt install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
-
+      run: |
+         sudo apt update -y 
+         sudo apt upgrade -y
+         sudo apt install gcc-aarch64-linux-gnu
+         sudo apt install gcc-arm-linux-gnueabi
+         sudo apt install  python2 dh-python python-is-python3
+         sudo apt install binutils make  libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
+         
     - name: Download kernel source and kernel su 
       run: |
         sudo -i
         cd $GITHUB_WORKSPACE
-        git clone -b lineage-19.1 https://github.com/wangxuanzhu/android_kernel_xiaomi_cannon.git
+        git clone -b lineage-19.1 https://github.com/xiaomi-mt6853-devs/android_kernel_xiaomi_cannon.git
         cd android_kernel_xiaomi_cannon
         curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
         echo "CONFIG_KPROBES=y" >>arch/arm64/configs/cannon_defconfig
