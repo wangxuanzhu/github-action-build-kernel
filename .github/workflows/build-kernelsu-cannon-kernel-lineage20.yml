@@ -272,7 +272,7 @@ jobs:
         echo "CONFIG_VHOST_NET=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_VHOST=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_VHOST_CROSS_ENDIAN_LEGACY=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_CRYPTO=y CONFIG_CRYPTO_AEAD=y" >>arch/arm64/configs/cannon_defconfig
+
     - name: Build Kernel
       working-directory: android_kernel_xiaomi_cannon
       run: |
