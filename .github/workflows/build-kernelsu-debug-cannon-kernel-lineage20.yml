@@ -247,7 +247,7 @@ jobs:
         echo "CONFIG_SYN_COOKIES=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_TCP_CONG_ADVANCED=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_TCP_MD5SIG=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_USER_NS=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_USER_NS=n" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_UTS_NS=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_VETH=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_VXLAN=y CONFIG_BRIDGE_VLAN_FILTERING=y" >>arch/arm64/configs/cannon_defconfig
